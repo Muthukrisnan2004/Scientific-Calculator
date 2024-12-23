@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="Main">
+        <div class="content">
+            <header>CASIO</header>
+            <input type="text" placeholder="0" id="op">
+            <button onclick="Clear()">AC</button>
+            <button onclick="del()">DEL</button>
+            <button onclick="display(7)">7</button>
+            <button onclick="display(8)">8</button>
+            <button onclick="display(9)">9</button>
+            <button onclick="display('/')">/</button>
+            <button onclick="display(4)">4</button>
+            <button onclick="display(5)">5</button>
+            <button onclick="display(6)">6</button>
+            <button onclick="display('*')">*</button>
+            <button onclick="display(1)">1</button>
+            <button onclick="display(2)">2</button>
+            <button onclick="display(3)">3</button>
+            <button onclick="display(0)">0</button>
+            <button onclick="result()">=</button>
+            <button onclick="display('+')">+</button>
+            <button onclick="display('-')">-</button>
+            <button onclick="computeSin()">sin</button>
+            <button onclick="computeCos()">cos</button>
+            <button onclick="computeTan()">tan</button>
+            <button onclick="computeLog()">log</button>
+            <button onclick="Sqrt()">√</button>
+        </div>
+    </div>
+    <script>
+        let op = document.getElementById('op');
+
+        function display(num) {
+            op.value += num;
+        }
+
+        function result() {
+            try {
+                op.value = eval(op.value);
+            } catch (err) {
+                alert("Error! Please re-enter the value.");
+                op.value = ''; // Clear the input field in case of an error
+            }
+        }
+
+        function Clear() {
+            op.value = '';
+        }
+
+        function del() {
+            op.value = op.value.slice(0, -1);
+        }
+
+        function Sqrt() {
+            try {
+                op.value = Math.sqrt(parseFloat(op.value));
+            } catch (err) {
+                alert("Error! Please enter a valid number.");
+                op.value = '';
+            }
+        }
+
+        function computeSin() {
+            try {
+                op.value = Math.sin(parseFloat(op.value) * (Math.PI / 180));
+            } catch (err) {
+                alert("Error! Please enter a valid number.");
+                op.value = '';
+            }
+        }
+
+        function computeCos() {
+            try {
+                op.value = Math.cos(parseFloat(op.value) * (Math.PI / 180));
+            } catch (err) {
+                alert("Error! Please enter a valid number.");
+                op.value = '';
+            }
+        }
+
+        function computeTan() {
+            try {
+                op.value = Math.tan(parseFloat(op.value) * (Math.PI / 180));
+            } catch (err) {
+                alert("Error! Please enter a valid number.");
+                op.value = '';
+            }
+        }
+
+        function computeLog() {
+            try {
+                op.value = Math.log10(parseFloat(op.value));
+            } catch (err) {
+                alert("Error! Please enter a valid number.");
+                op.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
